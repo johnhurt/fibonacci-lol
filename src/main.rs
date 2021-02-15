@@ -1,6 +1,5 @@
-
-use tokio::spawn;
 use tokio::runtime::Builder;
+use tokio::spawn;
 
 use std::env::args;
 use std::time::SystemTime;
@@ -11,8 +10,8 @@ async fn fib_par(n: u64) -> u64 {
         return n;
     }
 
-    let v1_future = spawn(fib_par(n-2));
-    let v2_future = spawn(fib_par(n-1));
+    let v1_future = spawn(fib_par(n - 2));
+    let v2_future = spawn(fib_par(n - 1));
 
     v1_future.await.unwrap() + v2_future.await.unwrap()
 }
@@ -35,7 +34,6 @@ fn main() {
         .expect("Failed to parse first argument as an non-negative integer");
 
     {
-
         let start = SystemTime::now();
         let result = fib(n);
 
